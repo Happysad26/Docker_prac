@@ -1,0 +1,17 @@
+#step1 
+
+sudo docker pull mysql
+
+#step2
+
+sudo docker run --name mysql-dev -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3307:3306 -v mysql-data:/var/lib/mysql -d mysql:latest
+
+#step3
+
+docker stop mysql-dev && docker rm mysql-dev
+
+#step4
+
+docker volume rm mysql-date
+
+
