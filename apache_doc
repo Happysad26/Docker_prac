@@ -1,0 +1,25 @@
+#step 1
+
+sudo docker pull httpd
+
+#step 2
+
+docker run -d -p 8080:80 --name my-apache2-server httpd
+
+#step 3
+
+echo "<h1>Hello world from Cdac</h1>" > index.html
+
+#step 4
+
+docker cp index.html my-apache2-server:/usr/local/apache2/htdocs
+
+
+#step 5
+
+docker stop my-apache2-server
+
+#step 6
+
+docker rm my-apache2-server
+
