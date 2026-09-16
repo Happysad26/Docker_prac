@@ -1,0 +1,26 @@
+#step 1- create file for the python script 
+
+nano hello.py
+
+#step 2
+
+print("Hello world from cdac")
+
+#step 3
+
+nano Dockerfile 
+
+FROM python:3.11-slim
+WORKDIR /app
+COPY hello.py /app
+CMD ["python", "hello.py"]
+
+#step 4
+
+sudo docker build -t hello-python .
+
+#step 5 
+
+sudo docker run hello-python
+
+
