@@ -1,0 +1,5 @@
+1)  docker pull wordpress
+2) docker -d -p 8080:80 --name my-wordpress-server wordpress
+3) docker ps 
+4) docker stop my-wordpress-server  #stop container
+5) docker rm my-wordpress-server    #stop port from background
