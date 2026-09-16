@@ -1,0 +1,15 @@
+#step 1
+
+sudo docker pull ubuntu 
+
+#step 2
+
+sudo docker run -it --name my-ubuntu ubuntu:latest
+
+#step 3
+
+sudo docker stop my-ubuntu 
+
+#step 4
+
+sudo docker rm my-ubuntu
