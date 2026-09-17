@@ -1,0 +1,68 @@
+#step 1 - create a folder for the project
+
+mkdir flask-cdac
+cd flask-cdac
+
+#step 2 - create file for the flask app
+
+nano app.py
+
+#step 3 - paste this code inside app.py
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello world from cdac"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+#step 4 - save and exit nano
+# press CTRL+O then ENTER to save, then CTRL+X to exit
+
+#step 5 - create the Dockerfile
+
+nano Dockerfile
+
+#step 6 - paste this inside Dockerfile
+
+FROM python:3.11-slim
+WORKDIR /app
+RUN pip install flask
+COPY app.py /app
+EXPOSE 5000
+CMD ["python", "app.py"]
+
+#step 7 - save and exit nano
+# press CTRL+O then ENTER to save, then CTRL+X to exit
+
+#step 8 - build the docker image
+
+sudo docker build -t flask-cdac .
+
+#step 9 - run the container in background, map host port 8080 to container port 5000
+
+sudo docker run -d -p 8080:5000 --name flask-cdac-container flask-cdac
+
+#step 10 - check the container is running
+
+sudo docker ps
+
+#step 11 - test it in terminal
+
+curl http://localhost:8080
+
+#step 12 - or open in browser
+
+http://localhost:8080
+
+#step 13 - check logs if something goes wrong
+
+sudo docker logs flask-cdac-container
+
+#step 14 - stop and remove container when done
+
+sudo docker stop flask-cdac-container
+sudo docker rm flask-cdac-container
